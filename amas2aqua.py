@@ -1,9 +1,9 @@
 import json,sys
 domain=sys.argv[1]
-fwt=open('/Users/sam-8402/aquatone/'+domain+'/hosts.txt','w')
-fwj=open('/Users/sam-8402/aquatone/'+domain+'/hosts.json','w')
+fwt=open('~/aquatone/'+domain+'/hosts.txt','w')
+fwj=open('~/aquatone/'+domain+'/hosts.json','w')
 
-f=open('/Users/sam-8402/Desktop/sample/'+domain+'.json','r').read().split('\n')[:-1]
+f=open('~/amass_sub_output/'+domain+'.json','r').read().split('\n')[:-1]
 list2json = {}
 for jsonData in f:
     jData=json.loads(jsonData)
