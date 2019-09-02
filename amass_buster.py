@@ -48,6 +48,7 @@ for domain in domains:
         subdomain = j['name']
         ports=host[subdomain]['ports']
         for port in ports:
+            print "trying "+subdomain+":"+port
             try:
                 url="http://"+subdomain+":"+port
                 req_http=requests.head(url,verify=False,timeout=5)
@@ -58,6 +59,6 @@ for domain in domains:
                     if(req_https.status_code==400):
                         break
                 print "gobuster: "+url
-                print subprocess.check_output("gobuster dir -u "+url+" -w common_quick.txt -t 50 -k --timeout=10s -s 200,301",shell=True)
+                print subprocess.check_output("gobuster dir -u "+url+" -w common_quick.txt -t 50 -k --timeout=10s -s 200",shell=True)
             except:
                 continue
