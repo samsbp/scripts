@@ -7,4 +7,5 @@ aquatone-takeover -d $1
 echo "sending data to slack[#recon]"
 msg="$(cat ~/aquatone/starbucks.com/takeovers.json)"
 slackcli -h "recon" -t $SLACK_TOKEN -u "script" -m "$msg"
-
+echo "collecting ports and busting [$1]"
+python amass_buster.py -d $1
