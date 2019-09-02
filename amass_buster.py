@@ -60,5 +60,7 @@ for domain in domains:
                         break
                 print "gobuster: "+url
                 print subprocess.check_output("gobuster dir -u "+url+" -w common_quick.txt -t 50 -k --timeout=10s -s 200",shell=True)
+                go_out=open('/root/amass_buster_output/'+domain).read()
+		        subprocess.check_output('slackcli -h "recon" -t * -u "'+domain+'" -m "'+go_out+'"',shell=True)
             except:
                 continue
