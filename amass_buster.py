@@ -59,6 +59,6 @@ for domain in domains:
                     if(req_https.status_code==400):
                         break
                 print "gobuster: "+url
-                print subprocess.check_output("gobuster dir -u "+url+" -w common_quick.txt -t 50 -k --timeout=10s -s 200,301",shell=True)
+                print subprocess.check_output("gobuster dir -u "+url+" -w common_quick.txt -t 50 -k --timeout=10s -s 200",shell=True)
             except:
                 continue
