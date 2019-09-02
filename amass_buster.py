@@ -48,6 +48,7 @@ for domain in domains:
         subdomain = j['name']
         ports=host[subdomain]['ports']
         for port in ports:
+            print "trying "+subdomain+":"+port
             try:
                 url="http://"+subdomain+":"+port
                 req_http=requests.head(url,verify=False,timeout=5)
