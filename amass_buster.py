@@ -46,16 +46,15 @@ for d in data:
     subdomain = j['name']
     ports=host[subdomain]['ports']
     for port in ports:
-        url="http://"+subdomain+":"+port
-        req_http=requests.head(url,verify=False)
-
-        if(req_http.status_code==400):
-            url="https://"+subdomain+":"+port
-            req_https=requests.head(url)
-            if(req_https.status_code==400):
-                break
-        print url
         try:
+            url="http://"+subdomain+":"+port
+            req_http=requests.head(url,verify=False)
+
+            if(req_http.status_code==400):
+                url="https://"+subdomain+":"+port
+                req_https=requests.head(url)
+                if(req_https.status_code==400):
+                    break
             print "gobuster: "+url
             print subprocess.check_output("gobuster dir -u "+url+" -w common_quick.txt -t 50 -k --timeout=10s -s 200,301",shell=True)
         except:
