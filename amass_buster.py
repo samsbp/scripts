@@ -62,12 +62,13 @@ for domain in domains:
                 print subprocess.check_output("gobuster dir -u "+url+" -w common_quick.txt -t 250 -k --timeout=10s -s 200,301,403 -o /root/amass_buster_output/"+domain,shell=True)
                 #go_out=open('/root/amass_buster_output/'+domain).read()
 		        print "sending data to recon"
-                go_out_200=subprocess.check_output('cat /root/amass_buster_output/'+domain+' | grep "200)"',shell=True)
-                print subprocess.check_output('slackcli -h "recon" -t xoxp-729572808867-729572810195-743206213686-3ec29356d714d80fe3ad08fe68bc2262 -u "'+url+'[200]" -m "'+go_out_200+'"',shell=True)
-                go_out_301=subprocess.check_output('cat /root/amass_buster_output/'+domain+' | grep "301)"',shell=True)
-        		print subprocess.check_output('slackcli -h "recon" -t xoxp-729572808867-729572810195-743206213686-3ec29356d714d80fe3ad08fe68bc2262 -u "'+url+'[301]" -m "'+go_out_301+'"',shell=True)
-        		go_out_403=subprocess.check_output('cat /root/amass_buster_output/'+domain+' | grep "403)"',shell=True)
-        		print subprocess.check_output('slackcli -h "recon" -t xoxp-729572808867-729572810195-743206213686-3ec29356d714d80fe3ad08fe68bc2262 -u "'+url+'[403]" -m "'+go_out_403+'"',shell=True)
+                subprocess.check_output('./slackmsg.sh '+domain+' '+url)
+                # go_out_200=subprocess.check_output('cat /root/amass_buster_output/'+domain+' | grep "200)"',shell=True)
+                # print subprocess.check_output('slackcli -h "recon" -t xoxp-729572808867-729572810195-743206213686-3ec29356d714d80fe3ad08fe68bc2262 -u "'+url+'[200]" -m "'+go_out_200+'"',shell=True)
+                # go_out_301=subprocess.check_output('cat /root/amass_buster_output/'+domain+' | grep "301)"',shell=True)
+        		# print subprocess.check_output('slackcli -h "recon" -t xoxp-729572808867-729572810195-743206213686-3ec29356d714d80fe3ad08fe68bc2262 -u "'+url+'[301]" -m "'+go_out_301+'"',shell=True)
+        		# go_out_403=subprocess.check_output('cat /root/amass_buster_output/'+domain+' | grep "403)"',shell=True)
+        		# print subprocess.check_output('slackcli -h "recon" -t xoxp-729572808867-729572810195-743206213686-3ec29356d714d80fe3ad08fe68bc2262 -u "'+url+'[403]" -m "'+go_out_403+'"',shell=True)
 
             except:
                 continue
