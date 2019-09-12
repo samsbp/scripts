@@ -6,7 +6,7 @@ args = parser.parse_args()
 domains=args.domains.split(',')
 for domain in domains:
 
-    f=open('***'+domain+'.json','r').read()
+    f=open('/root/amass_sub_output'+domain+'.json','r').read()
     data=f.split('\n')[:-1]
     host={}
     ipList={}
