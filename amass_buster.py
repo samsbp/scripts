@@ -61,7 +61,7 @@ for domain in domains:
                 print "gobuster: "+url
                 print subprocess.check_output("gobuster dir -u "+url+" -w common_quick.txt -t 250 -k --timeout=10s -s 200,301,403 -o /root/amass_buster_output/"+domain,shell=True)
                 #go_out=open('/root/amass_buster_output/'+domain).read()
-		        print "sending data to recon"
+		print "sending data to recon"
                 subprocess.check_output('./slackmsg.sh '+domain+' '+url)
                
             except:
